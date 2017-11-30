@@ -9,18 +9,18 @@ import { Link } from 'react-router-dom';
 class BackToList extends Component {
     onBackToList() {
         return _.map(this.props.route, path => {
-            console.log("--------------------");
-            console.log(path);
+            // console.log("--------------------");
+            // console.log(path);
             if(!path) {
                 return;
             }
             return (
-                <Link to={`${path.route}`}><span className="temp">/</span>{`${path.comment}`}</Link>
+                <Link key={path.route} to={`${path.route}`}><span className="btn btn-default">{`${path.comment}`}</span></Link>
             );
         });
     }
     render() {
-            return <div>{this.onBackToList()}</div>
+            return <div style={{display: 'inline-block'}}>{this.onBackToList()}</div>
     }
 }
 export  default BackToList;

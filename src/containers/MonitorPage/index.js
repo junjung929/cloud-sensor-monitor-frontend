@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LoadingIndicator from 'react-loading-indicator';
 import { fetchHospitals } from '../../actions';
 
 import Table from '../../components/Table';
@@ -9,9 +10,11 @@ import Table from '../../components/Table';
 class MonitorPage extends Component {
     componentDidMount() {
         this.props.fetchHospitals();
-        console.log("Hospital page mounted");
+        console.log("Monitor page mounted");
     }
-
+    componentDidUpdate() {
+        
+    }
     renderHospitals() {
         let i = 0;
         let hospitalImgStyle = {
@@ -20,6 +23,11 @@ class MonitorPage extends Component {
         }
         return _.map(this.props.hospitals, hospital => {
             i++;
+            if(!hospital){
+                return(
+                    <tr key={`ran${i}`}><td colSpan="100%"><LoadingIndicator /></td></tr>
+                )
+            }
             return (
                 <tr key={`${hospital._id}-${i}`} >
 
@@ -38,14 +46,6 @@ class MonitorPage extends Component {
         })
     }
     render() {
-        if (!this.props.hospitals) {
-            return (
-                <div>
-                    loading...
-                </div>
-            );
-        }
-        // console.log("hospitals log at monitor", this.props.hospitals);
         let tableHeadRow = (
         <tr>
             <th>No.</th>
@@ -58,6 +58,13 @@ class MonitorPage extends Component {
         let tableBody = (
             this.renderHospitals()
         );
+        if (!this.props.hospitals) {
+            return (
+                <div className="text-center">
+                    <LoadingIndicator />
+                </div>
+            );
+        }
         return (
             <div>
                 <h3 className="text-center">Hospitals</h3>

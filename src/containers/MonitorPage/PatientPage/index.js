@@ -4,7 +4,7 @@ import { fetchPatient } from '../../../actions';
 
 import Table from "../../../components/Table";
 import BackToList from '../../../components/backToList';
-
+import SensorStream from '../../../components/SensorStream';
 class SearchResultPage extends Component {
     constructor (props) {
         super(props);
@@ -49,8 +49,7 @@ class SearchResultPage extends Component {
                     <h3 className="text-center">Patient Detail</h3>
                     <Table tableHeadRow={tableHeadRow} tableBody={tableBody} />
                     <h4>Sensor Table</h4>
-                    <Table />
-                    <h4>Sensor Graph</h4>
+                    <SensorStream />
                 </div>
             );
     }

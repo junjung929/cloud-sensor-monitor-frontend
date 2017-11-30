@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPatientsSearched, fetchPatientsSearchedHospital } from '../../../actions';
+import LoadingIndicator from 'react-loading-indicator';
+import { fetchPatientsSearched } from '../../../actions';
 
 import Table from '../../../components/Table';
 import BackToList from '../../../components/backToList';
@@ -31,7 +32,6 @@ class PatientDataPage extends Component {
             this.setState({searchByName});
         }
         this.onCountResult()
-        
     }
     
     onCountResult() {
@@ -76,6 +76,13 @@ class PatientDataPage extends Component {
         });
     }
     render() { 
+        if(!this.props.patients_searched) {
+            return (
+                <div className="text-center">
+                    <LoadingIndicator />
+                </div>
+            );
+        }
         let tableHeadRow = (
             <tr>
                 <th>No.</th>
@@ -97,9 +104,9 @@ class PatientDataPage extends Component {
             return (<p colSpan="100%" className="text-center">No result... <BackToList /></p>);
         }    */
         return (
-            <div>
+            <div className="table-wrapper">
                 <BackToList />
-                <h3>Result of '{this.state.searchByName}'</h3>
+                <h3 style={{marginTop:0}} className="text-center">Result of '{this.state.searchByName}'</h3>
                 <Table tableHeadRow={tableHeadRow} tableBody={tableBody}/>
             </div>
         );
@@ -109,4 +116,4 @@ function mapStateToProps(state) {
     return { patients_searched: state.patients.patients_searched };
 }
 
-export default connect(mapStateToProps, { fetchPatientsSearched, fetchPatientsSearchedHospital })(PatientDataPage);
+export default connect(mapStateToProps, { fetchPatientsSearched })(PatientDataPage);

@@ -7,6 +7,8 @@ import SearchBar from './SearchBar';
 import HomePage from './HomePage';
 import MonitorPage from './MonitorPage';
 import HospitalPage from './MonitorPage/HospitalPage';
+import FloorPage from './MonitorPage/FloorPage';
+import RoomPage from './MonitorPage/RoomPage';
 import PatientPage from './MonitorPage/PatientPage';
 import SearchResultPage from './MonitorPage/SearchResultPage';
 import Footer from '../components/Footer';
@@ -32,8 +34,8 @@ export default class App extends Component {
                             <Route exact path="/" component={HomePage} />
                             <Route path="/monitor/patient=:_id" component={PatientPage} />
                             <Route path="/monitor/search=:searchByName" component={SearchResultPage} />
-                            <Route path="/monitor/hospital=:_id/floor=:floor/room=:room" component={HospitalPage} />
-                            <Route path="/monitor/hospital=:_id/floor=:floor" component={HospitalPage} />
+                            <Route path="/monitor/hospital=:_id/floor=:floor/room=:room" component={RoomPage} />
+                            <Route path="/monitor/hospital=:_id/floor=:floor" component={FloorPage} />
                             <Route path="/monitor/hospital=:_id" component={HospitalPage} />
                             <Route path="/monitor" component={MonitorPage} />
                             <Route path="" component={HomePage} />
