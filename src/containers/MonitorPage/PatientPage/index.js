@@ -4,8 +4,8 @@ import { fetchPatient } from '../../../actions';
 
 import Table from "../../../components/Table";
 import BackToList from '../../../components/backToList';
-import SensorStream from '../../../components/SensorStream';
-class SearchResultPage extends Component {
+import Sensor from './Sensor';
+class PatientDataPage extends Component {
     constructor (props) {
         super(props);
     }
@@ -44,14 +44,14 @@ class SearchResultPage extends Component {
                 <td>No.{patient.room_.number}</td>
             </tr>
         );
-            return (
-                <div>
-                    <h3 className="text-center">Patient Detail</h3>
-                    <Table tableHeadRow={tableHeadRow} tableBody={tableBody} />
-                    <h4>Sensor Table</h4>
-                    <SensorStream />
-                </div>
-            );
+        return (
+            <div>
+                <h3 className="text-center">Patient Detail</h3>
+                <Table tableHeadRow={tableHeadRow} tableBody={tableBody} />
+                <h4>Sensor Table</h4>
+                <Sensor ip={patient.bed_.sensor_ip} patient_name={patient.first_name}/>
+            </div>
+        );
     }
     render() { 
         if(!this.props.patient){return (<div>No result... <BackToList /></div>)}
@@ -67,4 +67,4 @@ function mapStateToProps({ patients }, ownProps) {
     return {patient: patients[ownProps.match.params._id]};
 }
 
-export default connect(mapStateToProps, { fetchPatient })(SearchResultPage);
+export default connect(mapStateToProps, { fetchPatient })(PatientDataPage);

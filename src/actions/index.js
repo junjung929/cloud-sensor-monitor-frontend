@@ -11,9 +11,11 @@ export const FETCH_BED = 'fetch_bed';
 export const FETCH_PATIENTS = 'fetch_patients';
 export const FETCH_PATIENT = 'fetch_patient';
 export const FETCH_PATIENTS_SEACHED = 'fetch_patients_searched';
+export const FETCH_SENSOR_DATA = 'fetch_sensor_data';
 
-// const ROOT_URL = 'http://localhost:3000/api';
-const URL = '10.114.38.6';
+
+const URL = '10.94.71.86';
+// const URL = '10.114.38.6';
 const PORT = 3000;
 const ROOT_URL = `http://${URL}:${PORT}/api`
 export function fetchHospitals() {
@@ -121,7 +123,18 @@ export function fetchPatientsSearched(searchByName) {
         type: FETCH_PATIENTS_SEACHED,
         payload: request
     }
-}/* 
+}
+export function fetchSensorData(ip) {
+    const query = `/ip=${ip}`;
+    const url = `${ROOT_URL}/sensors${query}`;
+    const request = axios.get(url);
+    
+    return {
+        type: FETCH_SENSOR_DATA,
+        payload: request
+    }
+}
+/* 
 export function fetchPatientsSearchedHospital(searchByName) {
     const query = `/searchByName=${searchByName}`;
     const url = `${ROOT_URL}/hospitals${query}`;

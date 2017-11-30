@@ -7,11 +7,14 @@ import {
     FETCH_ROOMS_AT,
     FETCH_ROOM,
     FETCH_BEDS_AT,
-    FETCH_BED
+    FETCH_BED,
+    FETCH_SENSOR_DATA
 } from '../actions';
 
 export default function(state = {}, action) {
     switch (action.type) {
+        case FETCH_SENSOR_DATA:
+            return { ...state, sensor_data: action.payload.data };
         case FETCH_BED:
             return { ...state, bed: action.payload.data };
         case FETCH_BEDS_AT:

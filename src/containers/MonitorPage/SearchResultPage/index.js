@@ -7,7 +7,7 @@ import { fetchPatientsSearched } from '../../../actions';
 import Table from '../../../components/Table';
 import BackToList from '../../../components/backToList';
 
-class PatientDataPage extends Component {
+class SearchResultPage extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -116,4 +116,4 @@ function mapStateToProps(state) {
     return { patients_searched: state.patients.patients_searched };
 }
 
-export default connect(mapStateToProps, { fetchPatientsSearched })(PatientDataPage);
+export default connect(mapStateToProps, { fetchPatientsSearched })(SearchResultPage);
