@@ -29,8 +29,8 @@ export default class App extends Component {
             <BrowserRouter>
                 <div>
                     <Header />
-                    <div className="container" style={ mainContainerDiv }>
                     <Carousel />
+                    <div className="container" style={ mainContainerDiv }>
                         <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/>
                         <Switch>
                             <Route exact path="/" component={HomePage} />

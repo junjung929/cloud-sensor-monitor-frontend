@@ -37,7 +37,7 @@ class SearchBar extends Component {
                         onChange={this.onInputChange} />
                     <span className={`${this.props.classNameSpan}`}>
                         <Link to={`/monitor/search=${this.state.term}`} onClick={() => this.setState({ term: ''})}>
-                            <button type="submit" className="btn btn-secondary">Submit</button>
+                            <button type="submit" className="btn btn-secondary">Search</button>
                         </Link>
                     </span>
             </form>

@@ -42,16 +42,16 @@ class Sensor extends Component {
     timer = () => {
         this.props.fetchSensorData(this.props.ip)
         .then((err, callback)=>{
+            if(!this.props.sensor_data){return}
+            let { sensor_data } = this.props
+            let { sensorGraph } = this.state;
+            sensorGraph.HR.push(sensor_data[0].HR);
+            sensorGraph.RR.push(sensor_data[0].RR);
+            sensorGraph.SV.push(sensor_data[0].SV);
+            sensorGraph.HRV.push(sensor_data[0].HRV);
+            sensorGraph.signalStrength.push(sensor_data[0].signalStrength);
+            console.log(this._mounted)
             if(this._mounted){
-                if(!this.props.sensor_data){return}
-                let { sensor_data } = this.props
-                let { sensorGraph } = this.state;
-                sensorGraph.HR.push(sensor_data[0].HR);
-                sensorGraph.RR.push(sensor_data[0].RR);
-                sensorGraph.SV.push(sensor_data[0].SV);
-                sensorGraph.HRV.push(sensor_data[0].HRV);
-                sensorGraph.signalStrength.push(sensor_data[0].signalStrength);
-                console.log(this._mounted)
                 this.setState({ sensorGraph })
                 // console.log(this.state.sensorGraph)
                 this.timer();
