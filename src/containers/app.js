@@ -15,20 +15,22 @@ import Footer from '../components/Footer';
 
 export default class App extends Component {
   render() {
+      const height = window.innerHeight;
       let mainContainerDiv = {
             paddingLeft: 8+"%",
             paddingRight: 8+"%",
             backgroundColor: "#fff",
             paddingTop: "20px",
-            paddingBottom: "20px"
+            paddingBottom: "20px",
+            minHeight: height
         }
     return (
         <div>
             <BrowserRouter>
                 <div>
                     <Header />
-                    <Carousel />
                     <div className="container" style={ mainContainerDiv }>
+                    <Carousel />
                         <SearchBar classNameForm={'input-group main-search-bar'} classNameSpan={'input-group-btn'}/>
                         <Switch>
                             <Route exact path="/" component={HomePage} />

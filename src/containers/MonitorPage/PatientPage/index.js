@@ -9,7 +9,7 @@ class PatientDataPage extends Component {
     constructor (props) {
         super(props);
     }
-    componentDidMount() {
+    componentWillMount() {
         let { _id } = this.props.match.params;
         this.props.fetchPatient(_id);
     }

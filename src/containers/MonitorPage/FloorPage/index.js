@@ -9,7 +9,7 @@ import BackToList from '../../../components/backToList';
 import Table from '../../../components/Table';
 
 class FloorPage extends Component {
-    componentDidMount() {
+    componentWillMount() {
         console.log("Floor page mounted");
         const { floor } = this.props.match.params;
         if (floor) {

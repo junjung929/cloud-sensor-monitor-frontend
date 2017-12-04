@@ -9,7 +9,7 @@ import BackToList from '../../../components/backToList';
 import Table from '../../../components/Table';
 
 class HospitalPage extends Component {
-    componentDidMount() {
+    componentWillMount() {
         console.log("Hospital page mounted");
         const { _id } = this.props.match.params;
         this.props.fetchHospital(_id);

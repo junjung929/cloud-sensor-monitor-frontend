@@ -14,7 +14,7 @@ export const FETCH_PATIENTS_SEACHED = 'fetch_patients_searched';
 export const FETCH_SENSOR_DATA = 'fetch_sensor_data';
 
 
-const URL = '10.94.71.86';
+const URL = '10.94.71.99';
 // const URL = '10.114.38.6';
 const PORT = 3000;
 const ROOT_URL = `http://${URL}:${PORT}/api`
@@ -127,8 +127,10 @@ export function fetchPatientsSearched(searchByName) {
 export function fetchSensorData(ip) {
     const query = `/ip=${ip}`;
     const url = `${ROOT_URL}/sensors${query}`;
-    const request = axios.get(url);
-    
+    const request = axios.get(url).then((response) => {
+        return response;
+    })
+
     return {
         type: FETCH_SENSOR_DATA,
         payload: request

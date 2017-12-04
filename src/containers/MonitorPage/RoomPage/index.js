@@ -15,7 +15,7 @@ class RoomPage extends Component {
             freeBedCnt: 0
         }
     }
-    componentDidMount() {
+    componentWillMount() {
         console.log("Room mounted");
         const { room } = this.props.match.params;
         if (room) {

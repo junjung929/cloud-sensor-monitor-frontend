@@ -22,14 +22,13 @@ class MonitorPage extends Component {
             height: "auto"
         }
         return _.map(this.props.hospitals, hospital => {
-            i++;
             if(!hospital){
                 return(
                     <tr key={`ran${i}`}><td colSpan="100%"><LoadingIndicator /></td></tr>
                 )
             }
             return (
-                <tr key={`${hospital._id}-${i}`} >
+                <tr key={`${hospital._id}-${i++}`} >
 
                     <th scope="row">{i}</th>
                     <td>{hospital.name}</td>
